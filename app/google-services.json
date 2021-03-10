@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "447178046513",
+    "project_id": "test-firebase-26bc7",
+    "storage_bucket": "test-firebase-26bc7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447178046513:android:ca21d65b0fedf1d1c16910",
+        "android_client_info": {
+          "package_name": "com.vend.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447178046513-kcgo11dnn6n5duuq7sgf1mhcb2rtubsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMbmnWuTAXRbESDWIS-ORLlwx-AW7iRxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447178046513-kcgo11dnn6n5duuq7sgf1mhcb2rtubsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
