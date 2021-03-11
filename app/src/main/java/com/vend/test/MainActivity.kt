@@ -14,6 +14,7 @@ import com.vend.test.databinding.ActivityMainBinding
 import com.vend.test.model.Post
 import com.vend.test.model.PostItem
 import com.vend.test.network.RetrofitInstance
+import com.vend.test.repo.PostRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -26,11 +27,21 @@ class MainActivity : AppCompatActivity() , PostAdapter.OnPostClickListener{
     private var binding: ActivityMainBinding? = null
     private lateinit var postAdapter:PostAdapter
 
+    private lateinit var postRepository: PostRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         getPostsFromAPI()
         postAdapter = PostAdapter(this)
+        postRepository = PostRepository(this)
+
+    }
+
+    private fun getAllPosts(){
+      val posts =   postRepository.getAllPosts()
+
+        setupRecyclerView(post = posts)
     }
 
     private fun getPostsFromAPI(){
@@ -49,8 +60,14 @@ class MainActivity : AppCompatActivity() , PostAdapter.OnPostClickListener{
                       call: Call<Post>,
                       response: Response<Post>
                   ) {
-                      response.body()?.let {
-                          setupRecyclerView(it)
+                      response.body()?.let { posts ->
+                          lifecycleScope.launch {
+                              withContext(Dispatchers.IO){
+                                  postRepository.insertPosts(posts)
+                              }
+                          }
+
+                          setupRecyclerView(posts)
                       }
 
                   }
