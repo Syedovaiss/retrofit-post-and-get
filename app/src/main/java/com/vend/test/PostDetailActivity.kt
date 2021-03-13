@@ -26,7 +26,7 @@ class PostDetailActivity : AppCompatActivity() {
 
     private fun routeToPostRequest(){
         binding?.nextButton?.setOnClickListener {
-            Intent(this,PostRequestActivity::class.java).also {
+            Intent(this,LocalizationActivity::class.java).also {
                 startActivity(it)
             }
         }
